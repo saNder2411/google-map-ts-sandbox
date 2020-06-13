@@ -1,5 +1,12 @@
 {
   "devDependencies": {
+    "@types/faker": "4.1.12",
     "typescript": "^3.9.5"
+  },
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "faker": "4.1.0"
   }
 }
