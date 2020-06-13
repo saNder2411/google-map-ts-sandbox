@@ -13,6 +13,7 @@ interface Mappable {
     lat: number;
     lng: number;
   };
+  getMarkerContent(): string;
 }
 
 export class CustomMap {
@@ -24,13 +25,21 @@ export class CustomMap {
     this.googleMap = new google.maps.Map(document.getElementById(divId), this.googleMapOpts)
   }
 
-  addMarker({location: {lat, lng}}: Mappable): void {
-    new google.maps.Marker({
+  addMarker({location: {lat, lng},  getMarkerContent}: Mappable): void {
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat,
         lng,
       }
+    });
+
+    marker.addListener(`click`, () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: getMarkerContent(),
+      });
+
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
