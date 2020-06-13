@@ -8,11 +8,12 @@ export const mapOptns = {
 
 type MapOptnsType = typeof mapOptns;
 
-interface Mappable {
+export interface Mappable {
   location: {
     lat: number;
     lng: number;
   };
+  color: string;
   getMarkerContent(): string;
 }
 
