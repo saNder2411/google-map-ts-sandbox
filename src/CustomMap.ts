@@ -1,4 +1,4 @@
-export const mapOptns = {
+export const mapOptions = {
   zoom: 1,
   center: {
     lat: 0,
@@ -6,7 +6,7 @@ export const mapOptns = {
   },
 };
 
-type MapOptnsType = typeof mapOptns;
+type mapOptionsType = typeof mapOptions;
 
 export interface Mappable {
   location: {
@@ -18,10 +18,10 @@ export interface Mappable {
 }
 
 export class CustomMap {
-  protected googleMapOpts: MapOptnsType;
+  protected googleMapOpts: mapOptionsType;
   private googleMap: google.maps.Map;
 
-  constructor(divId: string, googleMapOpts: MapOptnsType) {
+  constructor(divId: string, googleMapOpts: mapOptionsType) {
     this.googleMapOpts = googleMapOpts;
     this.googleMap = new google.maps.Map(document.getElementById(divId), this.googleMapOpts)
   }
